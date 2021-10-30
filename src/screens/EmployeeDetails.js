@@ -19,7 +19,7 @@ class EmployeeDetails extends Component {
         <View style={styles.body}>
           <View style={styles.rowContainer}>
             <View style={styles.profileImage}>
-              <Image style={styles.image} source={{ uri: data.profile_image }} />
+            {data.profile_image ? <Image source={{ uri: data.profile_image }} style={styles.image} />:<Image source={require('../../assets/dummy.png')} style={styles.image} />}
             </View>
             <View >
               <Text style={styles.title}>{data.name}</Text>

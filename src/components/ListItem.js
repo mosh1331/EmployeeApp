@@ -7,7 +7,8 @@ const ListItem = ({ data,onSelect }) => {
     return (
         <TouchableOpacity onPress={onSelect} activeOpacity={0.8} style={styles.container} >
             <View style={styles.profileImage}>
-                <Image source={{ uri: data.profile_image }} style={styles.image} />
+                {data.profile_image ? <Image source={{ uri: data.profile_image }} style={styles.image} />:<Image source={require('../../assets/dummy.png')} style={styles.image} />}
+                
             </View>
             <View style={styles.textContainer}>
                 <Text style={styles.title}> {data.name} </Text>
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding:10,
         borderBottomWidth:1,
-        borderColor:'grey'
+        borderColor:'rgba(0,0,0,0.3)'
     },
     profileImage: {
         width: 50,

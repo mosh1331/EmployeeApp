@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, FlatList, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
 import axios from 'react-native-axios'
-const { height, width } = Dimensions.get('window')
 import ListItem from '../components/ListItem';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
+const { height, width } = Dimensions.get('screen')
 
 
 class EmployeeList extends Component {
@@ -121,10 +123,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     searchContainer: {
-        borderWidth: 1,
-        borderColor: 'grey',
+        // borderWidth: 1,
+        // borderColor: 'grey',
         backgroundColor:'#ccc',
         padding:10,
+        paddingVertical:20
 
     },
     input:{
