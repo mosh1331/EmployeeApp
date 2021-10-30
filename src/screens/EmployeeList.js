@@ -27,27 +27,26 @@ class EmployeeList extends Component {
         try {
             const value = await AsyncStorage.getItem('@employees')
             const data = JSON.parse(value);
-            console.log(value)
             if (value === null) {
+                //data is stored so fetch from local
                 this.fetchDataFromServer()
 
                 // value previously stored
             } else {
+                //data is not  stored so fetch from server
                 this.setState({ data: data,FilteredDataSource:data, loading: false }, () => console.log(this.state.data, 'value exist'))
             }
         } catch (e) {
             // error reading value
+            console.log(e,'error')
         }
     }
 
     fetchDataFromServer = async () => {
-        console.log('fetching from server')
         try {
             axios.get('http://www.mocky.io/v2/5d565297300000680030a986')
                 .then((response) => {
-                    this.storedata(response.data)
-                    console.log(this.state.data, "<===== data");
-                })
+                    this.storedata(response.data)})
                 .catch((error) => {
                     console.log(error);
                 });
@@ -65,13 +64,8 @@ class EmployeeList extends Component {
         }
 
     }
-
-    handleSearch = (query) => {
-        this.setState({ query: query }, () => console.log(this.state.query))
-
-    }
+ 
     handlePress = (item) => {
-        console.log(item, 'pressed')
         this.props.navigation.navigate('EmployeeDetails', {
             item: item
         })
